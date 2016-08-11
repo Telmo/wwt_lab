@@ -1,0 +1,26 @@
+- src: "https://github.com/Nosmoht/ansible-role-foreman"
+  name: nosmoht.foreman
+
+- src: "https://github.com/geerlingguy/ansible-role-ntp"
+  version: 1.1.0
+  name: geerlingguy.ntp
+
+- src: "https://github.com/weareinteractive/ansible-apt"
+  version: 2.0.1
+  name: weareinteractive.apt
+
+- src: "https://github.com/trumant/ansible-users"
+  version: v1.0.0
+  name: trumant.users
+
+- src: "https://github.com/trumant/ansible-sudoers"
+  name: trumant.sudoers
+
+- src: "https://github.com/picotrading/ansible-yumrepo"
+  commit: 112766709c890c0ec3a09ad40a517257fbc8f05c
+  name: ansible-yumrepo
+
+- src: "https://github.com/Oefenweb/ansible-ca-certificates"
+  name: "oefenweb.ca-certificates"
+  version: v1.0.0
+

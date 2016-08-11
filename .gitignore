@@ -1,2 +1,13 @@
-/ilo_output
 .ilo_pass
+
+roles/
+tmp/
+.kitchen/
+.idea
+.kitchen.local.yml
+.vault_password
+.vagrant
+
+*.DS_Store
+
+*.retry
