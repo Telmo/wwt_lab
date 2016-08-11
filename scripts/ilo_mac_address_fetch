@@ -5,11 +5,11 @@ then
    echo "USAGE: ilo_mac_address_fetch <start octet> <end octet> <password_file>"
    exit 1
 fi
-
+mkdir ./ilo_output/
 # make sure you set SSHPASS or this wont work
 for (( i=$1; i<=$2; i++)) 
 do
    echo "10.255.71.$i"
-   sshpass -f $3 ssh Administrator@10.255.71.$i "show /system1/network1/Integrated_NICs"
+   sshpass -f $3 ssh Administrator@10.255.71.$i "show /system1/network1/Integrated_NICs" | tee ./ilo_output/"10.255.71.$i"
 done
 
