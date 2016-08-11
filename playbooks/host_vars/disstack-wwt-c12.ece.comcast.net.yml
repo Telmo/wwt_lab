@@ -1,0 +1,10 @@
+---
+ipmi_hostname: 10.255.71.62
+mac_address: 1c:98:ec:13:20:08
+ip_address: 10.253.59.15
+subnet: 255.255.255.128
+hostname: disstack-wwt-c12.ece.comcast.net
+copa_os_sequence_id: 3
+serial_number: MXQ629085B
+rack: KAFKA-NX5548-B
+model: ProLiant DL380 Gen9

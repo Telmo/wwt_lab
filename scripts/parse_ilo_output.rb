@@ -6,8 +6,8 @@ require 'json'
 require 'fileutils'
 require 'pathname'
 
-@ip_tic = 4
-@host_tic = 1
+@ip_tic = 14
+@host_tic = 11
 
 def parse_ilo_output_file(f, data_dir)
 	puts "Processing #{f}"
