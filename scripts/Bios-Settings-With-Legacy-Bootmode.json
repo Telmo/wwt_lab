@@ -1,0 +1,26 @@
+[
+  {
+    "Comments": {
+      "Manufacturer": "HP",
+      "Model": "ProLiant DL360 Gen9",
+      "BIOSFamily": "P89",
+      "BIOSDate": "03/05/2015"
+    }
+  },
+  {
+    "HpBios.1.2.0": {
+      "/rest/v1/systems/1/bios/Settings": {
+        "BootMode": "LegacyBios",
+        "DynamicPowerCapping": "Disabled",
+        "EmbeddedUserPartition": "Disabled",
+        "EmbNicEnable": "Disabled",
+        "EmbSata1Enable": "Disabled",
+        "EmbSata2Enable": "Disabled",
+        "PowerProfile": "Custom",
+        "PowerRegulator": "OsControl",
+        "UefiOptimizedBoot": "Disabled",
+        "WakeOnLan": "Disabled"
+      }
+    }
+  }
+]
