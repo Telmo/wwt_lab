@@ -1,10 +1,17 @@
 #! /bin/bash
-IP_FILE=$1
-OUTPUT_FOLDER=$2
 
+# The first arg can be an ip or a file with ips in it (one per line)
+if [ -f "$1" ]
+then
+  IP_LIST=`cat $1`
+else
+  IP_LIST=$1
+fi
+
+OUTPUT_FOLDER=$2
 mkdir -p $OUTPUT_FOLDER
 
-for ip in `cat $IP_FILE`
+for ip in $IP_LIST
 do
     echo "Getting System Information for: ${ip}" 
 	sshpass -p $ilo_pass ssh $ilo_user@$ip "show -a " | tee ./$OUTPUT_FOLDER/$ip

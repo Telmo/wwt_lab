@@ -1,9 +1,15 @@
 #!/bin/bash
 
-IP_FILE=$1
-ISO_URL=$2
+# The first arg can be an ip or a file with ips in it (one per line)
+if [ -f "$1" ]
+then
+  IP_LIST=`cat $1`
+else
+  IP_LIST=$1
+fi
 
-for ip in `cat $IP_FILE`
+ISO_URL=$2
+for ip in $IP_LIST
 do
     echo "ISO Boot on ${ip} to $ISO_URL" 
     sshpass -p $ilo_pass ssh $ilo_user@$ip "power off"

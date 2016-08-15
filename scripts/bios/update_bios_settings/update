@@ -1,10 +1,17 @@
 #!/bin/bash
 
-IP_FILE=$1
+# The first arg can be an ip or a file with ips in it (one per line)
+if [ -f "$1" ]
+then
+  IP_LIST=`cat $1`
+else
+  IP_LIST=$1
+fi
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
-for ip in `cat $IP_FILE`
+for ip in $IP_LIST
 do
     echo "BIOS setting changing on $ip" 
     hprest --nocache load -f $DIR/Bios-Settings-With-Legacy-Bootmode.json  --url ${ip} -u $ilo_user -p $ilo_pass
