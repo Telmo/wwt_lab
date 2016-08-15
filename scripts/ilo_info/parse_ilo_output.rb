@@ -9,16 +9,23 @@
 
 require 'yaml'
 
+def safe_string(s)
+  if ! s.valid_encoding?
+    s = s.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+  end
+  s
+end
+
 def safe_regex(regex, text)
-  m = regex.match(text)
+  m = regex.match(safe_string(text))
   return nil if m.nil?
-  m[1]
+  m[1].chomp
 end
 
 def ilo_section(section, text)
   return nil if section.nil? or text.nil?
 
-  m = /^#{section.gsub('/', '\/')}((.|\n)*)/.match(text)
+  m = /^#{section.gsub('/', '\/')}((.|\n)*)/.match(safe_string(text))
   return nil if m.nil?
   s = m[1]
   s[0..(s.index('Verbs') -1)]
