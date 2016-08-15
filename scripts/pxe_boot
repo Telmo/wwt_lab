@@ -1,5 +1,10 @@
 #!/bin/bash
+IP=$1
 
-sshpass -p $ilo_pass ssh $ilo_user@$ip "power off"
-sshpass -p $ilo_pass ssh $ilo_user@$ip "onetimeboot netdev1"
-sshpass -p $ilo_pass ssh $ilo_user@$ip "power on"
+# You cant change the one time boot mode with the host
+# is in POST mode.   So we just turn the host off.
+sshpass -p $ilo_pass ssh $ilo_user@$IP "power off"
+sleep 5
+
+sshpass -p $ilo_pass ssh $ilo_user@$IP "onetimeboot netdev1"
+sshpass -p $ilo_pass ssh $ilo_user@$IP "power on"

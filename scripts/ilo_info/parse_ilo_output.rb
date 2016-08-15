@@ -9,6 +9,7 @@
 
 require 'yaml'
 
+# Strips out unicode chars.
 def safe_string(s)
   if ! s.valid_encoding?
     s = s.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
@@ -16,12 +17,14 @@ def safe_string(s)
   s
 end
 
+# Does a nil safe regex search and will chomp white space from the result.
 def safe_regex(regex, text)
   m = regex.match(safe_string(text))
   return nil if m.nil?
   m[1].chomp
 end
 
+# Will fetch a ilo section by path.
 def ilo_section(section, text)
   return nil if section.nil? or text.nil?
 
@@ -33,7 +36,6 @@ end
 
 text = ARGF.read
 data = {}
-
 data['serial_number'] = safe_regex(/number=(.+)$/,                     ilo_section('/system1',                           text))
 data['model']         = safe_regex(/name=(.+)$/,                       ilo_section('/system1',                           text))
 data['ipmi_hostname'] = safe_regex(/IPv4Address=(.+)$/,                ilo_section('/map1/enetport1/lanendpt1/ipendpt1', text))
