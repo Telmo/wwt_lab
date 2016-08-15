@@ -1,4 +1,5 @@
 #!/bin/bash
 
-ipmitool -I lanplus -H $1 -U $2 -P $3 chassis bootdev pxe
-ipmitool -I lanplus -H $1 -U $2 -P $3 chassis power reset
+sshpass -p $ilo_pass ssh $ilo_user@$ip "power off"
+sshpass -p $ilo_pass ssh $ilo_user@$ip "onetimeboot netdev1"
+sshpass -p $ilo_pass ssh $ilo_user@$ip "power on"

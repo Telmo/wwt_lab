@@ -1,0 +1,14 @@
+#! \bin\bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
+DATA_FOLDER=$1
+OUT_FOLDER=$2
+
+mkdir $OUT_FOLDER
+
+for ip in `ls -1 $DATA_FOLDER`
+do
+   cat $DATA_FOLDER/$ip | ./parse_ilo_output.rb | tee $OUT_FOLDER/$ip.yml
+done

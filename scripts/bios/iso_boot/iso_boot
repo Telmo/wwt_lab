@@ -1,0 +1,12 @@
+#!/bin/bash
+
+IP_FILE=$1
+ISO_URL=$2
+
+for ip in `cat $IP_FILE`
+do
+    echo "ISO Boot on ${ip} to $ISO_URL" 
+    sshpass -p $ilo_pass ssh $ilo_user@$ip "vm cdrom insert $ISO_URL"
+	sshpass -p $ilo_pass ssh $ilo_user@$ip "vm cdrom set boot_once"
+	sshpass -p $ilo_pass ssh $ilo_user@$ip "power reset"
+done

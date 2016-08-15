@@ -1,0 +1,13 @@
+#!/bin/bash
+
+IP_FILE=$1
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
+for ip in `cat $IP_FILE`
+do
+    echo "BIOS setting changing on $ip" 
+    hprest --nocache load -f $DIR/Bios-Settings-With-Legacy-Bootmode.json  --url ${ip} -u $ilo_user -p $ilo_pass
+    echo "Rebooting $ip to save settings"
+    sshpass -p $ilo_pass ssh $ilo_user@$ip "power reset"
+done
