@@ -7,7 +7,7 @@ for ip in `cat $IP_FILE`
 do
     echo "ISO Boot on ${ip} to $ISO_URL" 
     sshpass -p $ilo_pass ssh $ilo_user@$ip "power off"
-    sshpass -p $ilo_pass ssh $ilo_user@$ip "/map1/oemhp_vm1/cddr1 oemhp_image=$ISO_URL"
+    sshpass -p $ilo_pass ssh $ilo_user@$ip "set /map1/oemhp_vm1/cddr1 oemhp_image=$ISO_URL"
     sshpass -p $ilo_pass ssh $ilo_user@$ip "set /map1/oemhp_vm1/cddr1 oemhp_boot=connect"
     sshpass -p $ilo_pass ssh $ilo_user@$ip "set /map1/oemhp_vm1/cddr1 oemhp_boot=once"
 	sshpass -p $ilo_pass ssh $ilo_user@$ip "power on"
